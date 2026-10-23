@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <meta name="description" content="Generate a fun nickname from your name." />
+    <title>Nicknamer — find your next nickname</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="generator-card" aria-labelledby="page-title">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <p class="eyebrow">a tiny nickname machine</p>
+        <h1 id="page-title">What should we<br /><span>call you?</span></h1>
+        <p class="intro">Type your name and we’ll give you a nickname worth keeping.</p>
+
+        <form id="nicknameForm" class="nickname-form">
+          <label for="nameInput">Your name</label>
+          <div class="input-row">
+            <input id="nameInput" name="name" type="text" autocomplete="given-name" maxlength="40" placeholder="e.g. Jamie" required />
+            <button type="submit">Generate</button>
+          </div>
+        </form>
+
+        <section id="result" class="result-card" aria-live="polite" aria-atomic="true">
+          <p class="result-label">Your nickname is</p>
+          <p id="nickname" class="nickname">—</p>
+          <button id="copyButton" class="copy-button" type="button" hidden>Copy nickname</button>
+        </section>
+        <p id="hint" class="hint">No accounts. No fuss. Just a nickname.</p>
+      </section>
+      <footer>made for names of all kinds <span>♡</span></footer>
+    </main>
+  </body>
+</html>

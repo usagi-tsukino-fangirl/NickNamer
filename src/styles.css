@@ -1,0 +1,71 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #171925;
+  background: #f6f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(circle at 20% 15%, #e6e4ff 0, transparent 30%), radial-gradient(circle at 85% 85%, #d9f6ed 0, transparent 28%), #f6f7fb;
+}
+
+.generator-card {
+  width: min(100%, 520px);
+  text-align: center;
+  background: rgba(255, 255, 255, .86);
+  border: 1px solid #e4e6ef;
+  border-radius: 24px;
+  padding: 48px clamp(22px, 7vw, 60px) 40px;
+  box-shadow: 0 24px 70px rgba(53, 58, 94, .12);
+  backdrop-filter: blur(14px);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 22px;
+  border-radius: 12px;
+  color: #fff;
+  background: #6259e8;
+  font-size: 20px;
+  box-shadow: 0 8px 18px rgba(98, 89, 232, .28);
+}
+
+.eyebrow, .result-label, .hint, footer { color: #777b8d; font-size: 12px; letter-spacing: .04em; }
+.eyebrow { margin: 0 0 12px; text-transform: uppercase; font-weight: 700; }
+h1 { margin: 0; font-size: clamp(40px, 9vw, 60px); line-height: 1.02; letter-spacing: -.055em; }
+h1 span { color: #6259e8; }
+.intro { max-width: 330px; margin: 18px auto 32px; color: #6c7183; line-height: 1.55; font-size: 15px; }
+.nickname-form { text-align: left; }
+.nickname-form label { display: block; margin: 0 0 8px 2px; color: #555a6c; font-size: 13px; font-weight: 650; }
+.input-row { display: flex; gap: 8px; }
+.input-row input { min-width: 0; flex: 1; border: 1px solid #dfe1ea; border-radius: 11px; outline: none; padding: 13px 14px; color: #171925; background: #fff; transition: border .2s, box-shadow .2s; }
+.input-row input:focus { border-color: #6259e8; box-shadow: 0 0 0 4px rgba(98, 89, 232, .12); }
+.input-row button { border: 0; border-radius: 11px; padding: 0 17px; color: #fff; background: #6259e8; font-weight: 700; transition: transform .15s, background .15s; }
+.input-row button:hover { background: #5148d3; transform: translateY(-1px); }
+.input-row button:active { transform: translateY(0); }
+.result-card { min-height: 152px; display: grid; place-items: center; align-content: center; margin-top: 24px; padding: 20px; border: 1px dashed #c9c8ef; border-radius: 16px; background: #f8f8ff; }
+.result-label { margin: 0 0 5px; }
+.nickname { margin: 0; color: #6259e8; font-size: clamp(27px, 7vw, 42px); line-height: 1.1; font-weight: 800; letter-spacing: -.045em; }
+.copy-button { margin-top: 15px; border: 1px solid #d6d4fa; border-radius: 8px; padding: 7px 10px; color: #6259e8; background: transparent; font-size: 12px; font-weight: 700; }
+.copy-button:hover { background: #eeedff; }
+.hint { margin: 20px 0 0; }
+footer { align-self: end; padding-top: 18px; } footer span { color: #6259e8; }
+
+@media (max-width: 430px) {
+  .app-shell { padding: 16px; }
+  .generator-card { padding-top: 36px; }
+  .input-row { display: grid; grid-template-columns: 1fr; }
+  .input-row button { min-height: 46px; }
+}
