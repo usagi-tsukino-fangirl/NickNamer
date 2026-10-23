@@ -1,1 +1,10 @@
 
+{
+  "rewrites": [
+    {
+      "source": "/admin/visits",
+      "destination": "/api/admin/visits"
+    }
+  ]
+}
+
