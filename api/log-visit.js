@@ -1,24 +1,33 @@
 
 import { neon } from "@neondatabase/serverless";
 
-const sql = neon(
-  process.env.DATABASE_URL || process.env.POSTGRES_URL
-);
+const connectionString =
+  process.env.DATABASE_URL || process.env.POSTGRES_URL;
 
 export default async function handler(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+
   if (req.method !== "POST") {
-    return res.status(405).end();
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  if (!connectionString) {
+    return res.status(500).json({ error: "Database not configured" });
   }
 
   try {
+    const sql = neon(connectionString);
     const forwarded = req.headers["x-forwarded-for"];
-    const ip = typeof forwarded === "string"
-      ? forwarded.split(",")[0].trim()
-      : req.headers["x-real-ip"] || "unknown";
 
-    const page = typeof req.body?.page_path === "string"
-      ? req.body.page_path.slice(0, 500)
-      : "/";
+    const ip =
+      typeof forwarded === "string"
+        ? forwarded.split(",")[0].trim()
+        : req.headers["x-real-ip"] || "unknown";
+
+    const page =
+      typeof req.body?.page_path === "string"
+        ? req.body.page_path.slice(0, 500)
+        : "/";
 
     await sql`
       INSERT INTO visits (ip_address, page_path)
@@ -31,4 +40,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Logging failed" });
   }
 }
-
